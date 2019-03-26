@@ -44,7 +44,9 @@ def statDbg():
 
 class Creature:
 	def __init__(self):
+		self.hpMax = 1
 		self.hp = 1
+		self.mpMax = 1
 		self.mp = 1
 		self.atk = 1
 		self.mAtk = 1
@@ -55,8 +57,8 @@ class Creature:
 		self.name = ''
 	def getStats(self):
 		print('{0} stats:'.format(self.name))
-		print('hp:  {}'.format(self.hp))
-		print('mp:  {}'.format(self.mp))
+		print('hp:  {0}/{1}'.format(self.hp, self.hpMax))
+		print('mp:  {0}/{1}'.format(self.mp, self.mpMax))
 		print('atk: {0} ~ {1}'.format(self.atkMin, self.atkMax))
 		print('mAt: {}'.format(self.mAtk))
 		print('dfn: {}'.format(self.dfn))
