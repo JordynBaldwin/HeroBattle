@@ -88,8 +88,10 @@ class Creature:
 
 class Hero(Creature):
 	def __init__(self):
-		self.hp = random.randint(200, 500)
-		self.mp = random.randint(3, 7)
+		self.hpMax = random.randint(200, 500)
+		self.hp = self.hpMax
+		self.mpMax = random.randint(3, 7)
+		self.mp = self.mpMax
 		self.atk = random.randint(30, 100)
 		self.mAtk = random.randint(40, 70)
 		self.dfn = random.randint(0, 20)
@@ -117,8 +119,10 @@ class Monster(Creature):
 	def __init__(self, mStat):
 		self.race = mStat[0]
 		self.name = self.nameGen()
-		self.hp = random.randint(mStat[1] - mStat[2], mStat[1] + mStat[2])
-		self.mp = random.randint(mStat[3] - mStat[4], mStat[3] + mStat[4])
+		self.hpMax = random.randint(mStat[1] - mStat[2], mStat[1] + mStat[2])
+		self.hp = self.hpMax
+		self.mpMax = random.randint(mStat[3] - mStat[4], mStat[3] + mStat[4])
+		self.mp = self.mpMax
 		self.atk = mStat[5]
 		self.mAtk = random.randint(mStat[7] - mStat[8], mStat[7] + mStat[8])
 		self.dfn = random.randint(mStat[9] - mStat[10], mStat[9] + mStat[10])
