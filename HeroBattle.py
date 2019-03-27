@@ -212,8 +212,10 @@ while (hero.hp > 0 and mon.hp > 0):
 		monAtk = getMonDamage(heroDfn, mon)
 		print('{0} dealt {2} damage to {1}!'.format(mon.name, hero.name, monAtk))
 		hero.hp -= monAtk
-	hero.mp += 1
-	mon.mp += 1
+	if hero.mp < hero.mpMax:
+		hero.mp += 1
+	if mon.mp < mon.mpMax:
+		mon.mp += 1
 	print('\n====================================\n')
 
 if is_debug:
