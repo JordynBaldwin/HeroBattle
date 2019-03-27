@@ -70,9 +70,11 @@ class Creature:
 		return damage
 	def healSelf(self):
 		print('{} cast Heal!'.format(self.name))
-		if self.mp >= 5:
+		if self.mp >= 5 and self.hp < self.hpMax:
 			regen = int(math.ceil(self.mAtk * 1.2))
 			self.hp += regen
+			if self.hp >= self.hpMax:
+				self.hp = self.hpMax
 			self.mp -= 5
 			print("{0} recovered {1} hp!".format(self.name, regen))
 		else:
