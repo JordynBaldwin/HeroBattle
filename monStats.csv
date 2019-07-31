@@ -1,0 +1,5 @@
+race,hp,hpVar,mp,mpVar,atk,atkVar,mAtk,mAtkVar,dfn,dfnVar
+goblin,200,25,5,1,45,0.5,37,5,13,4
+snake,150,10,0,0,90,0.13,0,0,0,0
+slime,400,35,30,0,5,0.0,55,3,5,2
+rare snek,1000000,0,0,0,15000,0.02,0,0,1000,0
