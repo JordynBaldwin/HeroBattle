@@ -17,7 +17,7 @@ Changes in this version:
 '''
 
 print('\n====================================\n')
-
+'''
 #defines monster stats using the format
 #(0 race, 1 hp, 2 hpVar, 3 mp, 4 mpVar, 5 atk, 6 atkVar, 7 mAtk, 8 mAtkVar, 9 dfn, 10 dfnVar)
 mStats = {
@@ -27,6 +27,10 @@ mStats = {
 	'slime': ('slime', 400, 35, 30, 0, 5, 0.0, 55, 3, 5, 2),
 	'snek': ('rare snek', 1000000, 0, 0, 0, 15000, 0.02, 0, 0, 1000, 0)
 }
+'''
+mStats = []
+with open('monStats.csv', 'r') as bestiary:
+	mStats = list(csv.reader(bestiary)
 
 defaultHeroName = 'Graham'
 
@@ -168,13 +172,13 @@ def getMonDamage(enemDef, monster):
 encounter = random.randint(1, 1000)
 enemy = ''
 if encounter == 1000:
-	enemy = 'snek'
+	enemy = 4
 elif encounter > 750:
-	enemy = 'snake'
+	enemy = 2
 elif encounter > 600:
-	enemy = 'slime'
+	enemy = 3
 else:
-	enemy = 'goblin'
+	enemy = 1
 
 hero = Hero()
 mon = Monster(mStats[enemy])
