@@ -1,6 +1,7 @@
 import random
 import math
 import os
+import csv
 
 #Toggle on to view debuging info
 is_debug = False
@@ -16,28 +17,25 @@ Changes in this version:
  added save functionality
 '''
 
+def dbg(message):
+	print('DEBUG:: ' + message)
+
 print('\n====================================\n')
-'''
-#defines monster stats using the format
-#(0 race, 1 hp, 2 hpVar, 3 mp, 4 mpVar, 5 atk, 6 atkVar, 7 mAtk, 8 mAtkVar, 9 dfn, 10 dfnVar)
-mStats = {
-	'': ('none snek', 0, 0, 0, 0, 0, 0.0, 0, 0, 0, 0),
-	'goblin': ('goblin', 200, 25, 5, 1, 45, 0.5, 37, 5, 13, 4),
-	'snake': ('snake', 150, 10, 0, 0, 90, 0.13, 0, 0, 0, 0),
-	'slime': ('slime', 400, 35, 30, 0, 5, 0.0, 55, 3, 5, 2),
-	'snek': ('rare snek', 1000000, 0, 0, 0, 15000, 0.02, 0, 0, 1000, 0)
-}
-'''
+
 mStats = []
 with open('monStats.csv', 'r') as bestiary:
-	mStats = list(csv.reader(bestiary)
+	mStats = list(csv.reader(bestiary))
+for i in mStats:
+	if i[1] == 'hp':
+		pass
+	else:
+		for j in range(1, 10):
+			i[j] = int(i[j])
+		i[10] = float(i[10])
 
 defaultHeroName = 'Graham'
 
 #namesLoc = 5
-
-def dbg(message):
-	print('DEBUG:: ' + message)
 
 def statDbg():
 	dbg("STATS")
@@ -129,9 +127,9 @@ class Monster(Creature):
 		self.mpMax = random.randint(mStat[3] - mStat[4], mStat[3] + mStat[4])
 		self.mp = self.mpMax
 		self.atk = mStat[5]
-		self.mAtk = random.randint(mStat[7] - mStat[8], mStat[7] + mStat[8])
-		self.dfn = random.randint(mStat[9] - mStat[10], mStat[9] + mStat[10])
-		self.atkVar = mStat[6]
+		self.mAtk = random.randint(mStat[6] - mStat[7], mStat[6] + mStat[7])
+		self.dfn = random.randint(mStat[8] - mStat[9], mStat[8] + mStat[9])
+		self.atkVar = mStat[10]
 		self.atkMin = round(self.atk * (1 - self.atkVar))
 		self.atkMax = round(self.atk * (1 + self.atkVar))
 		print('{0} the {1} appears!\n'.format(self.name, self.race))
@@ -179,7 +177,9 @@ elif encounter > 600:
 	enemy = 3
 else:
 	enemy = 1
-
+if is_debug:
+	dbg('mStats[enemy] readout:')
+	print(mStats[enemy])
 hero = Hero()
 mon = Monster(mStats[enemy])
 if is_debug:
