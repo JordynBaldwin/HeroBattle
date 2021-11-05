@@ -6,15 +6,17 @@ import csv
 #Toggle on to view debuging info
 is_debug = False
 
-__version__ = '0.6'
+__version__ = '0.6.0'
 
-'''Version 0.6
+'''Version 0.6.0
 Tested in Python 2.7
 Changes in this version:
  added maxHP and maxMP stats
+
+Features in progress:
  hero can level up
  player can fight again without exiting
- added save functionality
+ save functionality
 '''
 
 def dbg(message):
